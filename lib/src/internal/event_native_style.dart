@@ -187,7 +187,7 @@ class ZegoSignalingPluginEventCenterPassthroughEvent {
 
   void Function(
     ZIM zim,
-    List<ZIMMessageReaction> infos,
+    ZIMMessageReactionsChangedEventResult result,
   )? onMessageReactionsChanged;
 
   void Function(

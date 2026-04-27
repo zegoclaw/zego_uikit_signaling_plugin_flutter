@@ -1,3 +1,7 @@
+## 2.8.21
+
+- Update dependency
+
 ## 2.8.20
 
 - add API, switchRoom

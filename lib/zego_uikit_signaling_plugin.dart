@@ -10,8 +10,6 @@ import 'package:flutter/services.dart';
 import 'package:zego_callkit/src/internal/utils/uuid_impl.dart' show UUIDImpl;
 import 'package:zego_callkit/zego_callkit.dart';
 import 'package:zego_plugin_adapter/zego_plugin_adapter.dart';
-import 'package:zego_zim/zego_zim.dart';
-import 'package:zego_zpns/zego_zpns.dart';
 
 // Project imports:
 import 'package:zego_uikit_signaling_plugin/src/background_message/cache.dart';
@@ -22,8 +20,14 @@ import 'package:zego_uikit_signaling_plugin/src/internal/event_center.dart';
 import 'package:zego_uikit_signaling_plugin/src/internal/test_sdk.dart';
 import 'package:zego_uikit_signaling_plugin/src/internal/zim_extension.dart';
 import 'package:zego_uikit_signaling_plugin/src/log/logger_service.dart';
+import 'package:zego_zim/zego_zim.dart';
+import 'package:zego_zpns/zego_zpns.dart';
 
 export 'package:zego_zim/zego_zim.dart' hide ZIMEventHandler;
+
+part 'src/background_message.dart';
+
+part 'src/callkit.dart';
 
 part 'src/invitation.dart';
 
@@ -34,10 +38,6 @@ part 'src/notification.dart';
 part 'src/room.dart';
 
 part 'src/user.dart';
-
-part 'src/background_message.dart';
-
-part 'src/callkit.dart';
 
 /// @nodoc
 class ZegoUIKitSignalingPlugin
@@ -75,7 +75,7 @@ class ZegoUIKitSignalingPlugin
   @override
   Future<String> getVersion() async {
     final zimVersion = await ZIM.getVersion();
-    const signalingVersion = 'zego_uikit_signaling_plugin: 2.8.20;';
+    const signalingVersion = 'zego_uikit_signaling_plugin: 2.8.21;';
     if (!kIsWeb && (io.Platform.isAndroid || io.Platform.isIOS)) {
       final zpnsVersion = await ZPNs.getVersion();
       return '$signalingVersion zim:$zimVersion; zpns:$zpnsVersion;';
@@ -126,8 +126,8 @@ class ZegoUIKitSignalingPlugin
 
     ZegoSignalingLoggerService.logInfo(
       'ZIM create, '
-      'appID:$appID, '
-      'has appSign:${appSign.isNotEmpty}',
+          'appID:$appID, '
+          'has appSign:${appSign.isNotEmpty}',
       tag: 'signaling',
       subTag: 'init',
     );
