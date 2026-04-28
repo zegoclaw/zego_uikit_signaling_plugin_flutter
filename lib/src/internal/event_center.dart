@@ -52,15 +52,15 @@ class ZegoSignalingPluginEventCenter {
     };
     ZIMEventHandler.onMessageReactionsChanged = (
       ZIM zim,
-      List<ZIMMessageReaction> infos,
+      ZIMMessageReactionsChangedEventResult result,
     ) {
       ZegoSignalingLoggerService.logInfo(
-        'onMessageReactionsChanged, infos:$infos',
+        'onMessageReactionsChanged, result:$result',
         tag: 'signaling',
         subTag: 'event center zim',
       );
 
-      passThroughEvent.onMessageReactionsChanged?.call(zim, infos);
+      passThroughEvent.onMessageReactionsChanged?.call(zim, result.reactions);
     };
     // TODO: onReceivePeerMessage is deprecated, use onPeerMessageReceived instead when available
     ZIMEventHandler.onReceivePeerMessage = (
