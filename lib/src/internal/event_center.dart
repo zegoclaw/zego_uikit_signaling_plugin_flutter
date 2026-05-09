@@ -50,7 +50,6 @@ class ZegoSignalingPluginEventCenter {
 
       passThroughEvent.onMessageReceiptChanged?.call(zim, infos);
     };
-
     ZIMEventHandler.onMessageReactionsChanged = (
       ZIM zim,
       ZIMMessageReactionsChangedEventResult result,
